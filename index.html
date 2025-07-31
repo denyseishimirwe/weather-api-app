@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌤️ Weather Dashboard</h1>
+            <p>Get current weather information for any city</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Enter any city name worldwide (e.g., Mumbai, Cairo, Sydney)">
+                <button class="search-btn" onclick="searchWeather()">Search</button>
+                <button class="location-btn" onclick="getCurrentLocation()">📍 My Location</button>
+            </div>
+            
+            <div class="quick-cities">
+                <button class="city-btn" onclick="searchCity('London')">London</button>
+                <button class="city-btn" onclick="searchCity('New York')">New York</button>
+                <button class="city-btn" onclick="searchCity('Tokyo')">Tokyo</button>
+                <button class="city-btn" onclick="searchCity('Mumbai')">Mumbai</button>
+                <button class="city-btn" onclick="searchCity('Cairo')">Cairo</button>
+                <button class="city-btn" onclick="searchCity('Sydney')">Sydney</button>
+                <button class="city-btn" onclick="searchCity('Berlin')">Berlin</button>
+                <button class="city-btn" onclick="searchCity('Lagos')">Lagos</button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            Loading weather data...
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="weather-display" class="weather-display">
+            <div class="current-weather">
+                <h2 id="city-name"></h2>
+                <div class="temperature" id="temperature"></div>
+                <div id="description"></div>
+                <div>Feels like <span id="feels-like"></span></div>
+            </div>
+
+            <div class="weather-details">
+                <div class="detail-card">
+                    <h3>💨 Wind Speed</h3>
+                    <div class="detail-value" id="wind-speed"></div>
+                </div>
+                <div class="detail-card">
+                    <h3>💧 Humidity</h3>
+                    <div class="detail-value" id="humidity"></div>
+                </div>
+                <div class="detail-card">
+                    <h3>👁️ Visibility</h3>
+                    <div class="detail-value" id="visibility"></div>
+                </div>
+                <div class="detail-card">
+                    <h3>🌡️ Pressure</h3>
+                    <div class="detail-value" id="pressure"></div>
+                </div>
+            </div>
+
+            <div class="forecast">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-grid" id="forecast-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
