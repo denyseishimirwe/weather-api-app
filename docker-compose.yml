@@ -9,7 +9,7 @@ networks:
 
 services:
   web-01:
-    image: idenyse/weather-dashboard:v1
+    image: idenyse/weather-app:v1
     container_name: web-01
     ports:
       - "8080:80"
@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
 
   web-02:
-    image: idenyse/weather-dashboard:v1
+    image: idenyse/weather-app:v1
     container_name: web-02
     ports:
       - "8081:80"
