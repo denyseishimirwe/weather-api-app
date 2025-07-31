@@ -1,12 +1,18 @@
-FROM nginx:alpine
+FROM node:18-alpine
 
-# Copy application files to nginx html directory
-COPY index.html /usr/share/nginx/html/
-COPY styles.css /usr/share/nginx/html/
-COPY script.js /usr/share/nginx/html/
+# App
+WORKDIR /app
+COPY . .
+RUN npm install -g serve
 
-# Expose port 80
-EXPOSE 80
+# Install SSH
+RUN apk add openssh && \
+    adduser -D ubuntu && \
+    echo "ubuntu:pass123" | chpasswd && \
+    echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config && \
+    mkdir /var/run/sshd
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 22
+EXPOSE 3000
+
+CMD /usr/sbin/sshd && serve -s . -l 3000
