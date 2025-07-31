@@ -1,9 +1,9 @@
 // OpenWeatherMap API configuration
-const API_KEY = 'your_api_key_here'; // Get this from openweathermap.org
+const API_KEY = 'd81422884d99bcb289f280989beaecb7'; // Got this from openweathermap.org
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 // Demo mode for testing without API key
-const DEMO_MODE = true;
+const DEMO_MODE = false;
 
 // Function to generate realistic weather data for any city
 function generateMockWeatherData(cityName) {

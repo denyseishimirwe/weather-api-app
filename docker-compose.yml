@@ -9,24 +9,36 @@ networks:
 
 services:
   web-01:
-    image: web1       
+    image: idenyse/weather-dashboard:v1
     container_name: web-01
     ports:
-      - "2211:22"
-      - "8080:3000"   
+      - "8080:80"
     networks:
       lablan:
         ipv4_address: 172.20.0.11
+    restart: unless-stopped
 
   web-02:
-    image: nginx:alpine
+    image: idenyse/weather-dashboard:v1
     container_name: web-02
     ports:
-      - "2212:22"
       - "8081:80"
     networks:
       lablan:
         ipv4_address: 172.20.0.12
+    restart: unless-stopped
 
   lb-01:
-    image: nginx:alpine
+    image: haproxy:alpine
+    container_name: lb-01
+    ports:
+      - "80:80"
+      - "8404:8404"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    networks:
+      lablan:
+        ipv4_address: 172.20.0.10
+    depends_on:
+      - web-01
+      - web-02
