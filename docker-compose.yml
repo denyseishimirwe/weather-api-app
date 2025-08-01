@@ -11,7 +11,7 @@ services:
     image: isdenyse/weather-app:v1
     container_name: web-01
     ports:
-      - "8080:80"
+      - "8080:80"        # Map host port 8080 to container port 80 (optional, for direct access)
     networks:
       lablan:
         ipv4_address: 172.20.0.11
@@ -20,8 +20,7 @@ services:
   web-02:
     image: isdenyse/weather-app:v1
     container_name: web-02
-    ports:
-      - "8081:80"
+    # No ports exposed here; HAProxy will route internally
     networks:
       lablan:
         ipv4_address: 172.20.0.12
@@ -31,13 +30,14 @@ services:
     image: haproxy:alpine
     container_name: lb-01
     ports:
-      - "80:80"
-      - "8404:8404"
+      - "80:80"           # Expose HAProxy load balancer on host port 80
+      - "8404:8404"       # Optional: HAProxy stats/admin port (only if configured)
     volumes:
-      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     networks:
       lablan:
         ipv4_address: 172.20.0.10
     depends_on:
       - web-01
       - web-02
+    restart: unless-stopped
