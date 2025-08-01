@@ -4,7 +4,7 @@ This is a simple, elegant Weather Dashboard application that fetches and display
 
 ##  Live Demo
 
-[Click here to view the app on Netlify](https://your-netlify-site.netlify.app)  
+[Click here to view the app on Netlify](https://denyseishimirwe-weather-app.netlify.app/)  
 
 ## 🎥 Demo Video
 
@@ -33,8 +33,7 @@ Watch a short demo of the app in action:
 
 ##  Screenshots
 
-![Screenshot](./Weather%20app.PNG)
-
+![Screenshot](./weather-app.png)
 
 ---
 
