@@ -33,8 +33,8 @@ Watch a short demo of the app in action:
 
 ##  Screenshots
 
-<img src="screenshot1.png" alt="Weather app main page" width="600"/>
-> Replace with actual screenshots of your app.
+![Screenshot](./Weather%20app.PNG)
+
 
 ---
 
